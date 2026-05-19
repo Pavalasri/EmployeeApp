@@ -1,4 +1,5 @@
 const form = document.getElementById("leaveForm");
+
 const tableBody = document.getElementById("tableBody");
 
 form.addEventListener("submit", function(e){
