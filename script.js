@@ -1,70 +1,46 @@
 const form = document.getElementById("leaveForm");
-
 const tableBody = document.getElementById("tableBody");
-
-let leaves = JSON.parse(localStorage.getItem("leaves")) || [];
-
-displayLeaves();
 
 form.addEventListener("submit", function(e){
 
     e.preventDefault();
 
-    const leave = {
+    const empId = document.getElementById("empId").value;
 
-        empId: document.getElementById("empId").value,
+    const name = document.getElementById("name").value;
 
-        name: document.getElementById("name").value,
+    const leaveType = document.getElementById("leaveType").value;
 
-        type: document.getElementById("leaveType").value,
+    const fromDate = document.getElementById("fromDate").value;
 
-        from: document.getElementById("fromDate").value,
+    const toDate = document.getElementById("toDate").value;
 
-        to: document.getElementById("toDate").value
-    };
+    const row = document.createElement("tr");
 
-    leaves.push(leave);
+    row.innerHTML = `
 
-    localStorage.setItem("leaves", JSON.stringify(leaves));
+        <td>${empId}</td>
+        <td>${name}</td>
+        <td>${leaveType}</td>
+        <td>${fromDate}</td>
+        <td>${toDate}</td>
 
-    displayLeaves();
+        <td>
+            <button onclick="deleteLeave(this)">
+                Delete
+            </button>
+        </td>
+
+    `;
+
+    tableBody.appendChild(row);
 
     form.reset();
 
 });
 
-function displayLeaves(){
+function deleteLeave(button){
 
-    tableBody.innerHTML = "";
+    button.parentElement.parentElement.remove();
 
-    leaves.forEach((leave, index)=>{
-
-        tableBody.innerHTML += `
-
-        <tr>
-
-            <td>${leave.empId}</td>
-            <td>${leave.name}</td>
-            <td>${leave.type}</td>
-            <td>${leave.from}</td>
-            <td>${leave.to}</td>
-
-            <td>
-                <button onclick="deleteLeave(${index})">
-                    Delete
-                </button>
-            </td>
-
-        </tr>
-        `;
-    });
-}
-
-function deleteLeave(index){
-
-    leaves.splice(index,1);
-
-    localStorage.setItem("leaves", JSON.stringify(leaves));
-
-    displayLeaves();
 }
