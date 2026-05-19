@@ -4,30 +4,40 @@
     <title>Employee Leave Tracker</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <h1>Employee Leave Tracker</h1>
 
     <form id="leaveForm">
-        <input type="text" id="empId" placeholder="Employee ID" required>
 
-        <input type="text" id="name" placeholder="Employee Name" required>
+        <label>Employee ID</label><br>
+        <input type="text" id="empId" placeholder="Enter Employee ID" required><br>
 
+        <label>Employee Name</label><br>
+        <input type="text" id="name" placeholder="Enter Employee Name" required><br>
+
+        <label>Leave Type</label><br>
         <select id="leaveType">
-            <option>Casual</option>
-            <option>Sick</option>
-            <option>Annual</option>
-        </select>
 
-        <input type="date" id="fromDate" required>
-        <input type="date" id="toDate" required>
+            <option value="Casual">Casual</option>
+            <option value="Sick">Sick</option>
+            <option value="Annual">Annual</option>
 
-        <button type="submit">Submit</button>
+        </select><br>
+
+        <label>From Date</label><br>
+        <input type="date" id="fromDate" required><br>
+
+        <label>To Date</label><br>
+        <input type="date" id="toDate" required><br><br>
+
+        <button type="submit">Apply Leave</button>
+
     </form>
 
-    <h2>Leave Requests</h2>
-
     <table border="1">
+
         <thead>
             <tr>
                 <th>ID</th>
@@ -40,6 +50,7 @@
         </thead>
 
         <tbody id="tableBody"></tbody>
+
     </table>
 
     <script src="script.js"></script>
