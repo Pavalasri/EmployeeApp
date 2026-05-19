@@ -1,5 +1,4 @@
 const form = document.getElementById("leaveForm");
-
 const tableBody = document.getElementById("tableBody");
 
 form.addEventListener("submit", function(e){
@@ -13,6 +12,11 @@ form.addEventListener("submit", function(e){
     const leaveType = document.getElementById("leaveType").value;
 
     const fromDate = document.getElementById("fromDate").value;
+
+    if(fromDate === ""){
+    alert("From Date is required");
+    return;
+    }
 
     const toDate = document.getElementById("toDate").value;
 
